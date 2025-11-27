@@ -1,0 +1,234 @@
+:root {
+    --primary-color: #007bff;
+    --secondary-color: #6c757d;
+    --success-color: #28a745;
+    --warning-color: #ffc107;
+    --danger-color: #dc3545;
+    --light-bg: #ffffff;
+    --light-text: #212529;
+    --light-border: #dee2e6;
+    --dark-bg: #1a1a1a;
+    --dark-text: #f8f9fa;
+    --dark-border: #495057;
+}
+
+[data-bs-theme="light"] {
+    --bg-color: var(--light-bg);
+    --text-color: var(--light-text);
+    --border-color: var(--light-border);
+    --card-bg: #ffffff;
+    --footer-bg: #f8f9fa;
+}
+
+[data-bs-theme="dark"] {
+    --bg-color: var(--dark-bg);
+    --text-color: var(--dark-text);
+    --border-color: var(--dark-border);
+    --card-bg: #2d2d2d;
+    --footer-bg: #343a40;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: all 0.3s ease;
+}
+
+/* Навигация */
+.navbar-custom {
+    background-color: var(--card-bg) !important;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.navbar-brand, .nav-link {
+    color: var(--text-color) !important;
+}
+
+.nav-link.active {
+    color: var(--primary-color) !important;
+    font-weight: bold;
+}
+
+.theme-toggle {
+    border: 1px solid var(--border-color);
+    background-color: var(--card-bg);
+    color: var(--text-color);
+}
+
+/* Карточки */
+.card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+}
+
+.project-card {
+    height: 100%;
+}
+
+/* Прогресс-бары */
+.progress {
+    background-color: var(--border-color);
+    height: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    background-color: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+/* Навыки */
+.skill-item {
+    margin-bottom: 1rem;
+}
+
+.skill-item span {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+/* Футер */
+.footer-custom {
+    background-color: var(--footer-bg) !important;
+    border-top: 1px solid var(--border-color);
+    color: var(--text-color);
+}
+
+/* Изображения */
+.profile-img {
+    max-width: 300px;
+    border: 5px solid var(--primary-color);
+}
+
+.contact-icon {
+    width: 20px;
+    height: 20px;
+    filter: invert(var(--icon-invert, 0));
+}
+
+[data-bs-theme="dark"] .contact-icon {
+    --icon-invert: 1;
+}
+
+/* Формы */
+.form-control {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+}
+
+.form-control:focus {
+    background-color: var(--card-bg);
+    border-color: var(--primary-color);
+    color: var(--text-color);
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+/* Кнопки фильтров */
+.btn-outline-primary {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-outline-primary:hover,
+.btn-outline-primary.active {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+/* Модальные окна */
+.modal-content {
+    background-color: var(--card-bg);
+    color: var(--text-color);
+}
+
+.modal-header, .modal-footer {
+    border-color: var(--border-color);
+}
+
+.btn-close {
+    filter: invert(var(--icon-invert, 0));
+}
+
+/* Списки */
+.list-group-item {
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    border-color: var(--border-color);
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .profile-img {
+        max-width: 200px;
+        margin-top: 2rem;
+    }
+    
+    .display-4 {
+        font-size: 2rem;
+    }
+}
+
+.skip-link {
+  position: absolute;
+  inset-inline-start: 1rem;
+  inset-block-start: -100%;
+  z-index: 10000;
+  padding: .5rem .75rem;
+  background: #111;
+  color: #fff;
+  border-radius: .5rem;
+  text-decoration: none;
+}
+.skip-link:focus,
+.skip-link:focus-visible {
+  inset-block-start: 1rem;
+}
+
+:focus-visible {
+  outline: 3px solid #2563eb;
+  outline-offset: 2px;
+}
+
+@media (pointer: coarse) {
+  a, button, .nav-link {
+    min-height: 44px;
+    padding-block: .75rem;
+  }
+}
+.card-img-top,
+.project-card img {
+  display: block;
+  width: 100%;
+  height: auto;          /* 🔹 убираем фиксированную высоту */
+  aspect-ratio: 4 / 3;   /* 🔹 добавляем стабильную пропорцию */
+  object-fit: cover;     /* 🔹 чтобы красиво обрезалось, если фото не того формата */
+  /*border-top-left-radius: .75rem;
+  border-top-right-radius: .75rem;*/
+}
+
+.responsive-image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.projects-preview .row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+/* Фокус для кнопки смены темы */
+.theme-toggle:focus-visible {
+  outline: 3px solid #2563eb;     /* синий контур, как у остальных */
+  outline-offset: 3px;            /* чуть отступает от кнопки */
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.3); /* мягкое свечение */
+}
